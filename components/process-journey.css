@@ -1,0 +1,347 @@
+.process-section .process-journey {
+  --journey-gap: 20px;
+  --journey-padding: 32px;
+  --journey-marker-center: calc(var(--journey-padding) + 23px);
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 38px var(--journey-gap);
+  margin: 48px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.process-section .process-journey > .process-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 252px;
+  padding: var(--journey-padding);
+  border: 1px solid #dcdcd1;
+  border-radius: 8px;
+  background: var(--ivory);
+  transition: border-color 320ms ease, background-color 320ms ease;
+}
+
+.process-section .process-journey .process-step-top {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.process-section .process-journey .process-step-top > span {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid #c9b99f;
+  border-radius: 50%;
+  background: var(--ivory);
+  color: #76654c;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1;
+  transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1), border-color 320ms ease, background-color 320ms ease;
+}
+
+.process-section .process-journey .process-step-top > svg {
+  width: 21px;
+  height: 21px;
+  color: #9c9d8b;
+  stroke-width: 1.25;
+  transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process-section .process-journey .process-step-content {
+  position: relative;
+}
+
+.process-section .process-journey h3 {
+  margin: 0 0 12px;
+  color: var(--green-dark);
+  font-family: var(--font-sans), Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.035em;
+  text-transform: none;
+}
+
+.process-section .process-journey p {
+  max-width: 30ch;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* A fine route follows the reading order through the space between steps. */
+.process-section .process-journey > .process-step:nth-child(-n + 2)::after {
+  content: "";
+  position: absolute;
+  top: var(--journey-marker-center);
+  left: calc(100% + 1px);
+  width: 18px;
+  height: 1px;
+  background: #c9c7b8;
+}
+
+.process-section .process-journey > .process-step:nth-child(3)::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: var(--journey-marker-center);
+  right: -12px;
+  bottom: -20px;
+  width: calc(300% + 52px - var(--journey-marker-center));
+  border-right: 1px solid #c9c7b8;
+  border-bottom: 1px solid #c9c7b8;
+  border-bottom-right-radius: 9px;
+  pointer-events: none;
+}
+
+.process-section .process-journey > .process-step--trial {
+  grid-column: span 2;
+  min-height: 396px;
+  padding: 34px var(--journey-padding);
+  border-color: var(--green);
+  background: var(--green);
+  color: var(--ivory);
+}
+
+.process-section .process-journey > .process-step--trial::before {
+  content: "";
+  position: absolute;
+  top: -19px;
+  left: var(--journey-marker-center);
+  width: 1px;
+  height: 52px;
+  background: #c9c7b8;
+}
+
+.process-section .process-journey > .process-step--trial::after {
+  content: "";
+  position: absolute;
+  top: 57px;
+  right: -21px;
+  width: 20px;
+  height: 1px;
+  background: #c9c7b8;
+}
+
+.process-section .process-journey .process-step--trial .process-step-top {
+  margin-bottom: 25px;
+}
+
+.process-section .process-journey .process-step--trial .process-step-top > span {
+  border-color: rgb(232 224 204 / 50%);
+  background: var(--green);
+  color: #ece5d3;
+}
+
+.process-section .process-journey .process-step--trial .process-step-top > svg {
+  color: #d1d8c6;
+}
+
+.process-section .process-journey .process-step--trial h3 {
+  color: #e4e9da;
+}
+
+.process-section .process-journey .process-step--trial p {
+  max-width: 54ch;
+  color: #d3ddce;
+}
+
+.process-section .process-journey .process-step--trial .process-highlight {
+  max-width: 620px;
+  margin: 15px 0 19px;
+  color: var(--ivory);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(30px, 2.65vw, 38px);
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.process-section .process-journey .process-highlight strong {
+  font-weight: 400;
+}
+
+.process-section .process-journey .process-step--trial .process-scope {
+  max-width: 64ch;
+  margin-top: 27px;
+  padding-top: 20px;
+  border-top: 1px solid rgb(220 228 209 / 24%);
+  color: #d8dfd1;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.process-section .process-journey > .process-step:last-child {
+  min-height: 396px;
+  padding: 34px 32px;
+  background: var(--cream);
+}
+
+.process-section .process-journey > .process-step:last-child .process-step-content {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid #d8d7cc;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .process-section .process-journey > .process-step:hover {
+    border-color: #b9b6a5;
+  }
+
+  .process-section .process-journey .process-step:hover .process-step-top > span {
+    transform: translateY(-2px);
+    border-color: #a99573;
+    background: #f1efe6;
+  }
+
+  .process-section .process-journey .process-step:hover .process-step-top > svg {
+    transform: translateX(4px);
+  }
+
+  .process-section .process-journey > .process-step--trial:hover {
+    border-color: var(--green-dark);
+    background: var(--green-dark);
+  }
+
+  .process-section .process-journey .process-step--trial:hover .process-step-top > span {
+    border-color: #e6ddc7;
+    background: var(--green-dark);
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 761px) {
+  .process-section .process-journey {
+    --journey-padding: 24px;
+  }
+
+  .process-section .process-journey > .process-step--trial,
+  .process-section .process-journey > .process-step:last-child {
+    padding: 28px var(--journey-padding);
+  }
+
+  .process-section .process-journey > .process-step--trial::before {
+    height: 46px;
+  }
+
+  .process-section .process-journey > .process-step--trial::after {
+    top: 51px;
+  }
+}
+
+@media (max-width: 760px) {
+  .process-section .process-journey {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    margin-top: 36px;
+    padding-left: 58px;
+  }
+
+  .process-section .process-journey > .process-step,
+  .process-section .process-journey > .process-step--trial,
+  .process-section .process-journey > .process-step:last-child {
+    grid-column: auto;
+    min-height: 0;
+    padding: 24px;
+  }
+
+  .process-section .process-journey > .process-step:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    top: 45px;
+    right: auto;
+    bottom: -63px;
+    left: -37px;
+    width: 1px;
+    height: auto;
+    background: #c9c7b8;
+    border: 0;
+  }
+
+  .process-section .process-journey > .process-step::after {
+    display: none;
+  }
+
+  .process-section .process-journey .process-step-top,
+  .process-section .process-journey .process-step--trial .process-step-top {
+    position: static;
+    margin: 0;
+  }
+
+  .process-section .process-journey .process-step-top > span {
+    position: absolute;
+    top: 23px;
+    left: -59px;
+    width: 44px;
+    height: 44px;
+    font-size: 14px;
+  }
+
+  .process-section .process-journey .process-step-top > svg {
+    display: none;
+  }
+
+  .process-section .process-journey h3 {
+    font-size: 20px;
+  }
+
+  .process-section .process-journey p {
+    max-width: 44ch;
+    font-size: 16px;
+  }
+
+  .process-section .process-journey .process-step--trial .process-highlight {
+    margin-top: 18px;
+    font-size: clamp(26px, 4.4vw, 34px);
+    line-height: 1.48;
+    text-wrap: pretty;
+  }
+
+  .process-section .process-journey .process-step--trial .process-scope {
+    margin-top: 24px;
+    padding-top: 20px;
+    font-size: 14px;
+  }
+
+  .process-section .process-journey > .process-step:last-child .process-step-content {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .process-section .process-journey > .process-step,
+  .process-section .process-journey > .process-step--trial,
+  .process-section .process-journey > .process-step:last-child {
+    padding: 21px 18px;
+  }
+
+  .process-section .process-journey .process-step--trial .process-highlight {
+    font-size: 25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-section .process-journey > .process-step,
+  .process-section .process-journey .process-step-top > span,
+  .process-section .process-journey .process-step-top > svg {
+    opacity: 1;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}

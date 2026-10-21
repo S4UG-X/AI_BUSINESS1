@@ -1,0 +1,167 @@
+.service-card--interactive {
+  --service-tilt-x: 0deg;
+  --service-tilt-y: 0deg;
+  --service-parallax-x: 0px;
+  --service-parallax-y: 0px;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transition: transform 360ms cubic-bezier(.22, 1, .36, 1), box-shadow 360ms ease;
+}
+
+.service-card-image.service-card-media {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  color: var(--green);
+  text-align: left;
+  isolation: isolate;
+  overflow: hidden;
+  perspective: 900px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.service-card-media:focus-visible { outline: 2px solid #42724d; outline-offset: -6px; border-radius: 0; }
+.service-card-media > * { pointer-events: none; }
+.service-scene-parallax, .service-scene-flip, .service-scene-face { display: block; position: absolute; inset: 0; }
+.service-scene-parallax { transform: translate(var(--service-parallax-x), var(--service-parallax-y)); transition: transform 360ms cubic-bezier(.22, 1, .36, 1); }
+.service-scene-flip { transform-style: preserve-3d; }
+.service-scene-face { transition: opacity 240ms ease; }
+.service-scene-face--back { opacity: 0; }
+.service-card--interactive[data-phase="complete"] .service-scene-face--front { opacity: 0; }
+.service-card--interactive[data-phase="complete"] .service-scene-face--back { opacity: 1; }
+.service-card--interactive[data-phase="complete"][data-activated="true"] .service-scene-flip { animation: service-scene-turn 400ms cubic-bezier(.22, .75, .26, 1) both; }
+.service-card-media .service-card-icon { z-index: 2; transition: transform 360ms cubic-bezier(.22, 1, .36, 1); }
+.service-card--interactive[data-phase="preview"] .service-card-icon { animation: service-icon-nod 650ms cubic-bezier(.22, 1, .36, 1) both; }
+.service-card--ai-receptionist[data-phase="preview"] .service-card-icon { animation-name: service-icon-ring; }
+.service-card--custom-automation[data-phase="preview"] .service-card-icon { animation-name: service-icon-route; }
+.service-card--customer-support[data-phase="preview"] .service-card-icon { animation-name: service-icon-reply; }
+.service-card--reviews-follow-ups[data-phase="preview"] .service-card-icon { animation-name: service-icon-pop; }
+.service-card--social-content[data-phase="preview"] .service-card-icon { animation-name: service-icon-write; }
+.service-card--local-seo[data-phase="preview"] .service-card-icon { animation-name: service-icon-search; }
+.service-card--educational-videos[data-phase="preview"] .service-card-icon { animation-name: service-icon-play; }
+.service-card--customer-retention[data-phase="preview"] .service-card-icon { animation-name: service-icon-reconnect; }
+.service-scene { display: block; width: 100%; height: 100%; overflow: visible; stroke-linecap: round; stroke-linejoin: round; }
+
+.scene-background { fill: var(--cream); }
+.scene-paper { fill: var(--paper); }
+.scene-pale { fill: #e4eae0; }
+.scene-green { fill: var(--green); }
+.scene-taupe { fill: var(--taupe); }
+.scene-stroke { stroke: #d6dacf; stroke-width: 1; }
+.scene-panel { fill: var(--paper); stroke: #d5d8ce; stroke-width: 1; }
+.scene-corner-marks { fill: none; stroke: #d7d6cc; stroke-width: 1; }
+.scene-line { fill: none; stroke: #a4b09e; stroke-width: 2.4; }
+.scene-border-line { fill: none; stroke: #e4e7de; stroke-width: 1; }
+.scene-green-stroke { fill: none; stroke: var(--green); stroke-width: 1.8; }
+.scene-white-stroke { fill: none; stroke: #faf9f6; stroke-width: 1.7; }
+.scene-orbit { fill: none; stroke: #d8ddcf; stroke-width: 1; stroke-dasharray: 2 5; }
+.scene-connector { fill: none; stroke: #c5cebf; stroke-width: 2; }
+.scene-flow-path, .scene-reconnect-path { fill: none; stroke: var(--green); stroke-width: 2; stroke-dasharray: 10 200; stroke-dashoffset: 210; }
+.scene-data-dot { opacity: .45; }
+.scene-call-ring { opacity: .17; }
+.scene-call-pulse { opacity: .8; }
+.scene-wave-bar { transform-box: fill-box; transform-origin: center; }
+.scene-typing { fill: #9aa98f; }
+.scene-star { fill: #e2e5dc; stroke: #c0c8b8; stroke-width: 1; }
+.scene-star--filled { fill: #b29a78; stroke: #b29a78; }
+.scene-writing-line { stroke-dasharray: 80; stroke-dashoffset: 0; }
+.scene-content-arrow { opacity: .7; }
+.scene-map-bg { fill: #e5e9df; stroke: #d5dacc; stroke-width: 1; }
+.scene-map-road { fill: none; stroke: #fdfcf8; stroke-width: 14; }
+.scene-map-road-center { fill: none; stroke: #d8dfd0; stroke-width: 1; }
+.scene-search-radius { fill: #193d2e; fill-opacity: .06; stroke: #193d2e; stroke-opacity: .22; stroke-width: 1; }
+.scene-search-orbit { fill: none; stroke: #bdc9b5; stroke-width: 1; stroke-dasharray: 2 5; }
+.scene-map-pin { transform-box: fill-box; transform-origin: center bottom; }
+.scene-fan-blades { fill: #b0bda8; stroke: #899b7d; stroke-width: .7; }
+.scene-fan { transform-box: fill-box; transform-origin: center; }
+.scene-play-disc { opacity: .96; }
+.scene-play-symbol { fill: #faf9f6; stroke: #faf9f6; stroke-width: 2; }
+.scene-video-track { fill: none; stroke: #d7ddcf; stroke-width: 3; }
+.scene-video-progress { fill: none; stroke: var(--green); stroke-width: 3; stroke-dasharray: 170; }
+.scene-person { transform-box: fill-box; transform-origin: center; }
+.scene-dormant-dot { opacity: .6; }
+
+/* Previews play once, then rest; the surrounding copy never changes. */
+.service-card--interactive[data-phase="preview"] .scene-phone { transform-box: fill-box; transform-origin: center; animation: service-phone-ring 650ms ease-in-out 2; }
+.service-card--interactive[data-phase="preview"] .scene-call-ring { transform-box: fill-box; transform-origin: center; animation: service-call-ring 1600ms ease-out both; }
+.service-card--interactive[data-phase="preview"] .scene-wave-bar { animation: service-wave 500ms ease-in-out 3 alternate; }
+.service-card--interactive[data-phase="preview"] .scene-flow-path { animation: service-flow 1700ms cubic-bezier(.4, 0, .2, 1) both; }
+.service-card--interactive[data-phase="preview"] .scene-node { animation: service-node 800ms ease both; }
+.service-card--interactive[data-phase="preview"] .scene-data-dot { animation: service-data-move 1500ms ease-in-out both; }
+.service-card--interactive[data-phase="preview"] .scene-data-dot--second { animation-delay: 300ms; }
+.service-card--interactive[data-phase="preview"] .scene-chat-bubble { animation: service-message-in 600ms cubic-bezier(.2, .8, .2, 1) both; }
+.service-card--interactive[data-phase="preview"] .scene-typing { animation: service-typing 700ms ease-in-out 2 both; }
+.service-card--interactive[data-phase="preview"] .scene-review-star { transform-box: fill-box; transform-origin: center; animation: service-star-pop 700ms cubic-bezier(.2, .8, .2, 1) both; }
+.service-card--interactive[data-phase="preview"] .scene-review-star .scene-star { animation: service-star-fill 700ms ease both; animation-delay: inherit; }
+.service-card--interactive[data-phase="preview"] .scene-followup { animation: service-message-in 650ms 700ms cubic-bezier(.2, .8, .2, 1) both; }
+.service-card--interactive[data-phase="preview"] .scene-notification { animation: service-notification 800ms 1200ms ease both; }
+.service-card--interactive[data-phase="preview"] .scene-writing-line { animation: service-write 650ms ease both; }
+.service-card--interactive[data-phase="preview"] .scene-content-arrow { animation: service-arrow-move 900ms 350ms ease both; }
+.service-card--interactive[data-phase="preview"] .scene-social-post { animation: service-post-in 850ms 700ms cubic-bezier(.2, .8, .2, 1) both; }
+.service-card--interactive[data-phase="preview"] .scene-map-pin--active { animation: service-pin 900ms cubic-bezier(.2, .8, .2, 1) both; }
+.service-card--interactive[data-phase="preview"] .scene-search-radius { transform-box: fill-box; transform-origin: center; animation: service-search-ring 1500ms ease-out both; }
+.service-card--interactive[data-phase="preview"] .scene-search-result { animation: service-message-in 700ms 650ms ease both; }
+.service-card--interactive[data-phase="preview"] .scene-fan { animation: service-fan 2200ms cubic-bezier(.3, .1, .2, 1) both; }
+.service-card--interactive[data-phase="preview"] .scene-airflow { animation: service-airflow 900ms ease-in-out 2 alternate; }
+.service-card--interactive[data-phase="preview"] .scene-play-disc, .service-card--interactive[data-phase="preview"] .scene-play-symbol { animation: service-play-fade 1600ms ease both; }
+.service-card--interactive[data-phase="preview"] .scene-video-progress { animation: service-video-progress 1900ms ease both; }
+.service-card--interactive[data-phase="preview"] .scene-reconnect-path { stroke-dasharray: 60; animation: service-reconnect 1300ms ease both; }
+.service-card--interactive[data-phase="preview"] .scene-delivery { animation: service-delivery 1200ms cubic-bezier(.3, .1, .2, 1) both; }
+.service-card--interactive[data-phase="preview"] .scene-reactivated-person { animation: service-reactivate 1000ms 700ms ease both; }
+.service-card--interactive[data-phase="preview"] .scene-delay-0 { animation-delay: 0ms; }
+.service-card--interactive[data-phase="preview"] .scene-delay-1 { animation-delay: 160ms; }
+.service-card--interactive[data-phase="preview"] .scene-delay-2 { animation-delay: 320ms; }
+.service-card--interactive[data-phase="preview"] .scene-delay-3 { animation-delay: 480ms; }
+.service-card--interactive[data-phase="preview"] .scene-delay-4 { animation-delay: 640ms; }
+
+.service-scene--complete .scene-flow-path, .service-scene--complete .scene-reconnect-path { stroke-dasharray: none; stroke-dashoffset: 0; }
+.service-scene--complete .scene-call-ring { opacity: .3; }
+.service-scene--complete .scene-data-dot { opacity: 0; }
+.service-scene--complete .scene-wave-bar { stroke: #6b8760; }
+.service-scene--complete .scene-search-radius { fill-opacity: .1; }
+.service-scene--complete .scene-draft { opacity: .65; }
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .service-card--interactive:hover { z-index: 1; transform: perspective(1000px) translateY(-4px) rotateX(var(--service-tilt-x)) rotateY(var(--service-tilt-y)) scale(1.01); box-shadow: 0 12px 24px rgb(25 61 46 / 9%); }
+  .service-card--interactive:hover .service-scene-parallax { transform: translate(var(--service-parallax-x), var(--service-parallax-y)) scale(1.025); }
+}
+
+@keyframes service-scene-turn { 0% { transform: rotateY(-10deg) scale(.98); } 100% { transform: rotateY(0deg) scale(1); } }
+@keyframes service-icon-nod { 0%, 100% { transform: translateY(0) rotate(0deg); } 40% { transform: translateY(-3px) rotate(-4deg); } }
+@keyframes service-icon-ring { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-8deg); } 50% { transform: rotate(7deg); } 75% { transform: rotate(-4deg); } }
+@keyframes service-icon-route { 0%, 100% { transform: translateX(0); } 45% { transform: translateX(3px); } }
+@keyframes service-icon-reply { 0%, 100% { transform: translateY(0); } 45% { transform: translateY(-3px); } }
+@keyframes service-icon-pop { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.1); } }
+@keyframes service-icon-write { 0%, 100% { transform: rotate(0); } 45% { transform: rotate(-8deg) translateX(2px); } }
+@keyframes service-icon-search { 0%, 100% { transform: translate(0, 0); } 35% { transform: translate(2px, -2px); } 70% { transform: translate(-1px, 1px); } }
+@keyframes service-icon-play { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.06) translateX(2px); } }
+@keyframes service-icon-reconnect { 0%, 100% { transform: rotate(0); } 45% { transform: rotate(6deg) scale(1.05); } }
+@keyframes service-phone-ring { 0%, 100% { rotate: 0deg; } 25%, 75% { rotate: -8deg; } 50% { rotate: 8deg; } }
+@keyframes service-call-ring { 0% { scale: .85; opacity: .35; } 100% { scale: 1.2; opacity: 0; } }
+@keyframes service-wave { from { scale: 1 .45; } to { scale: 1 1.1; } }
+@keyframes service-flow { from { stroke-dashoffset: 210; } to { stroke-dashoffset: 0; } }
+@keyframes service-node { 0% { fill: #fff; } 55%, 100% { fill: #e4eae0; } }
+@keyframes service-data-move { 0% { translate: -12px 0; opacity: 0; } 40% { opacity: 1; } 100% { translate: 18px 0; opacity: 0; } }
+@keyframes service-message-in { from { translate: 0 7px; opacity: .1; } to { translate: 0 0; opacity: 1; } }
+@keyframes service-typing { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
+@keyframes service-star-pop { 0% { scale: .8; } 55% { scale: 1.15; } 100% { scale: 1; } }
+@keyframes service-star-fill { from { fill: #e2e5dc; stroke: #c0c8b8; } to { fill: #b29a78; stroke: #b29a78; } }
+@keyframes service-notification { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+@keyframes service-write { from { stroke-dashoffset: 80; } to { stroke-dashoffset: 0; } }
+@keyframes service-arrow-move { 0%, 100% { translate: 0 0; } 50% { translate: 5px 0; } }
+@keyframes service-post-in { from { translate: -7px 0; opacity: .25; } to { translate: 0 0; opacity: 1; } }
+@keyframes service-pin { 0% { scale: .9; translate: 0 -8px; } 60% { scale: 1.05; translate: 0 2px; } 100% { scale: 1; translate: 0 0; } }
+@keyframes service-search-ring { 0% { scale: .7; opacity: 0; } 30% { opacity: 1; } 100% { scale: 1.15; opacity: .5; } }
+@keyframes service-fan { from { rotate: 0deg; } to { rotate: 280deg; } }
+@keyframes service-airflow { from { translate: -2px 0; opacity: .3; } to { translate: 2px 0; opacity: .8; } }
+@keyframes service-play-fade { 0%, 100% { opacity: 1; } 25%, 75% { opacity: .12; } }
+@keyframes service-video-progress { from { stroke-dashoffset: 45; } to { stroke-dashoffset: -115; } }
+@keyframes service-reconnect { from { stroke-dashoffset: 60; } to { stroke-dashoffset: 0; } }
+@keyframes service-delivery { 0% { translate: -18px 14px; opacity: 0; } 30%, 70% { opacity: 1; } 100% { translate: 16px -10px; opacity: 0; } }
+@keyframes service-reactivate { 0% { opacity: .5; } 100% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card--interactive, .service-card--interactive:hover, .service-scene-parallax { transform: none; }
+  .service-card--interactive *, .service-card--interactive *::before, .service-card--interactive *::after { animation: none !important; transition: none !important; }
+  .service-card--interactive[data-phase="complete"] .service-scene-flip { transform: none; }
+}
