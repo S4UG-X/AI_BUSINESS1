@@ -404,9 +404,7 @@ export default function Home() {
               <a className="text-link" href="#contact">
                 Let’s meet <ArrowUpRight size={16} aria-hidden="true" />
               </a>
-              <small>
-                ANZO AI is independent and is not sponsored or endorsed by USM.
-              </small>
+            
             </div>
           </div>
         </section>
