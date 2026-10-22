@@ -152,7 +152,15 @@ export function ServiceCard({ service }: { service: Service }) {
         </span>
         <span className="service-card-icon" aria-hidden="true"><Icon size={21} strokeWidth={1.6} /></span>
       </button>
-      <div className="service-card-body"><h4>{service.title}</h4><p>{service.description}</p></div>
+      <div className="service-card-body">
+        <h4>{service.title}</h4>
+        <p>{service.description}</p>
+        <div className="service-card-pricing">
+          {service.pricing.map((price) => (
+            <small key={price}>{price}</small>
+          ))}
+        </div>
+      </div>
     </li>
   );
 }

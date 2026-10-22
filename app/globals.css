@@ -535,6 +535,12 @@ h2 {
 }
 
 /* Services */
+.services-pricing-note {
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
 .service-categories {
   display: grid;
   gap: 39px;

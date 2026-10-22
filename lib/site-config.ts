@@ -33,6 +33,7 @@ export type Service = {
   id: string;
   title: string;
   description: string;
+  pricing: string[];
   icon: string;
   image: string;
 };
@@ -43,6 +44,7 @@ export const automationServices: Service[] = [
     title: "AI Receptionist",
     description:
       "Answer inquiries, book appointments, and send your team the details.",
+    pricing: ["$199 setup + $99/month"],
     icon: "phone",
     image: siteConfig.images.services,
   },
@@ -51,6 +53,7 @@ export const automationServices: Service[] = [
     title: "Custom Automation",
     description:
       "We research your business, find repetitive work, and quote a custom automation plan.",
+    pricing: ["From $299 one-time", "Optional support: $49/month"],
     icon: "workflow",
     image: siteConfig.images.services,
   },
@@ -59,6 +62,10 @@ export const automationServices: Service[] = [
     title: "Customer Support Chatbots",
     description:
       "Customer support chatbots for your website, WhatsApp, SMS, Instagram, and Facebook.",
+    pricing: [
+      "Website: $199 setup + $79/month",
+      "Multi-channel: from $499 setup + $149/month",
+    ],
     icon: "message",
     image: siteConfig.images.services,
   },
@@ -67,6 +74,7 @@ export const automationServices: Service[] = [
     title: "Reviews & Follow-ups",
     description:
       "Request honest reviews and send personalized service follow-ups by email at 24 hours, 7 days, or 30 days.",
+    pricing: ["$99 setup + $29/month"],
     icon: "repeat",
     image: siteConfig.images.services,
   },
@@ -78,6 +86,7 @@ export const marketingServices: Service[] = [
     title: "Social Scripts & Content",
     description:
       "On-brand scripts and social posts that turn your HVAC expertise into useful content.",
+    pricing: ["$199/month"],
     icon: "pen",
     image: siteConfig.images.services,
   },
@@ -86,6 +95,7 @@ export const marketingServices: Service[] = [
     title: "Local SEO",
     description:
       "AI-assisted local SEO to help nearby homeowners discover your business.",
+    pricing: ["$149 setup + $299/month"],
     icon: "search",
     image: siteConfig.images.services,
   },
@@ -94,6 +104,7 @@ export const marketingServices: Service[] = [
     title: "Educational Videos",
     description:
       "AI-assisted educational videos that explain maintenance, comfort, and common questions.",
+    pricing: ["Not available now"],
     icon: "video",
     image: siteConfig.images.services,
   },
@@ -102,6 +113,7 @@ export const marketingServices: Service[] = [
     title: "Customer Reactivation",
     description:
       "Personalized campaigns for customers already in your database, with appropriate consent.",
+    pricing: ["$249 per email campaign"],
     icon: "users",
     image: siteConfig.images.services,
   },
@@ -220,7 +232,7 @@ export const testimonials: Testimonial[] = [
 export const faqs = [
   {
     question: "How much does it cost?",
-    answer: `We research your workflow and provide a custom quote. For automation systems: ${trialPolicy.headline} Marketing services are quoted separately, and third-party platform costs are discussed upfront.`,
+    answer: `Starting prices are listed with each service above. We confirm the final scope and quote with you before building. For automation systems: ${trialPolicy.headline} Third-party platform costs and any extra usage or integrations are discussed upfront.`,
   },
   {
     question: "How long does implementation take?",

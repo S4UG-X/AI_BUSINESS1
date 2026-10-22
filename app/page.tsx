@@ -207,6 +207,9 @@ export default function Home() {
                 Choose the support that fits your team.
               </p>
             </div>
+            <p className="services-pricing-note">
+              Starting prices shown below. Final pricing depends on scope and usage.
+            </p>
             <div className="service-categories">
               <ServiceCards
                 title="AI automation"

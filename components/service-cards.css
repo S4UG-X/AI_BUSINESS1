@@ -1,4 +1,6 @@
 .service-card--interactive {
+  display: flex;
+  flex-direction: column;
   --service-tilt-x: 0deg;
   --service-tilt-y: 0deg;
   --service-parallax-x: 0px;
@@ -9,6 +11,7 @@
 
 .service-card-image.service-card-media {
   display: block;
+  flex-shrink: 0;
   width: 100%;
   padding: 0;
   border: 0;
@@ -20,6 +23,25 @@
   -webkit-appearance: none;
   appearance: none;
 }
+
+.service-card--interactive .service-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.service-card-pricing {
+  display: grid;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+.service-card-pricing small {
+  color: #6b786d;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
 .service-card-media:focus-visible { outline: 2px solid #42724d; outline-offset: -6px; border-radius: 0; }
 .service-card-media > * { pointer-events: none; }
 .service-scene-parallax, .service-scene-flip, .service-scene-face { display: block; position: absolute; inset: 0; }
